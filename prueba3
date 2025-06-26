@@ -1,0 +1,104 @@
+print("inventario de productos en una tienda")
+print("""menu
+      1.-Ingresar producto
+      2.-Buscar producto
+      3.-Eliminar producto
+      4.-Salir""")
+
+stock=[]
+categoria=["electronica","alimentos","ropa"]
+
+
+
+def ingre_prodc(stock,categoria):
+    try:#verificar producto
+        nombre_producto=str(input("ingrese nombre: ")).strip()
+        for nombre in producto:
+            while nombre ["nombre"]==nombre_producto:
+                print("el nombre ya esta ingresado")
+                nombre_producto=input("ingrese nombre: ").strip()
+                
+        
+        #verificar categoria
+        nombre_categoria=input("ingrese categoria: ").strip()
+        while nombre_categoria not in categoria:
+            print("el elemneto no esta en la lista")
+            print(categoria)
+            nombre_categoria=input("ingrese categoria: ").split()
+        
+        #verificar precio
+        precio_producto=int(input("ingrese precio: "))
+        while len(precio_producto)<1 or len(precio_producto) >=10:
+            print("ingrese precio correcto")
+        #verificar alfanum
+        while precio_producto.isalnum()==False:
+            print("el numero deve ser digitos numericos")
+            precio=int(input("ingrese precio: "))
+        
+        #contruyendo el equipo
+        producto={"nombre":nombre_producto,"nombre_categoria":categoria,"precio":precio_producto}
+        stock.append(producto)
+        print("producto agregado con exito")
+        return "producto agregado con exito"
+        
+
+    except ValueError:
+        print("intente de nuevo")
+    except NameError:
+        print("error de nombre")
+    except ZeroDivisionError:
+        print("no divicion")
+
+def buscar_producto():
+    try:
+        nombre_producto=input("ingrese nombre del producto: ").split()
+        for producto in stock:
+            if producto["nombre"]==nombre_producto:
+                print(f"el nombre del producto es {producto["nombre"]} y el precio es {producto["precio"]}")
+            else: 
+                print("el producti no esxiste :)")
+                return "el producti no esxiste :)"
+
+
+    except ValueError:
+        print("intente de nuevo")
+    except NameError:
+        print("error de nombre")
+    except ZeroDivisionError:
+        print("no divicion")
+def eliminar_producto():
+    try:
+        nombre_producto=input("ingrese nombre del productoa eliminar: ").split()
+        for producto in stock:
+            if producto["nombre"]==nombre_producto:
+                stock.remove(producto)
+            else:
+                print("el producto no existe")
+                return "el producto no existe"
+    
+    except ValueError:
+        print("intente de nuevo")
+    except NameError:
+        print("error de nombre")
+    except ZeroDivisionError:
+        print("no divicion")
+while True:
+    try:
+        respuesta= int(input("ingrese opcion: "))
+        if respuesta==1:
+            ingre_prodc(stock,categoria)
+        elif respuesta==2:
+             buscar_producto(stock)
+        elif respuesta==3:
+            eliminar_producto(stock)
+        elif respuesta==4:
+            print("salir del programa")
+        else:
+            print("ingrese opcion valida, 1 a 4 ")
+
+    except ValueError:
+        print("intente de nuevo")
+    except NameError:
+        print("error de nombre")
+    except ZeroDivisionError:
+        print("no divicion")
